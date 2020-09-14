@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-bulettin-heading" jhiTranslate="pgeApp.bulettin.home.createOrEditLabel">Create or edit a Bulettin</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.sessionB" for="field_sessionB">Session B</label>
+                    <select class="form-control" name="sessionB" formControlName="sessionB" id="field_sessionB">
+                        <option value="Trimestre1">{{ 'pgeApp.SessionLt.Trimestre1' | translate }}</option>
+                        <option value="Trimestre2">{{ 'pgeApp.SessionLt.Trimestre2' | translate }}</option>
+                        <option value="Trimestre3">{{ 'pgeApp.SessionLt.Trimestre3' | translate }}</option>
+                        <option value="Sequence1">{{ 'pgeApp.SessionLt.Sequence1' | translate }}</option>
+                        <option value="Sequence2">{{ 'pgeApp.SessionLt.Sequence2' | translate }}</option>
+                        <option value="Sequence3">{{ 'pgeApp.SessionLt.Sequence3' | translate }}</option>
+                        <option value="Sequence4">{{ 'pgeApp.SessionLt.Sequence4' | translate }}</option>
+                        <option value="Sequence5">{{ 'pgeApp.SessionLt.Sequence5' | translate }}</option>
+                        <option value="Sequence6">{{ 'pgeApp.SessionLt.Sequence6' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.tCoef" for="field_tCoef">T Coef</label>
+                    <input type="number" class="form-control" name="tCoef" id="field_tCoef"
+                           formControlName="tCoef"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.tNoteI" for="field_tNoteI">T Note I</label>
+                    <input type="number" class="form-control" name="tNoteI" id="field_tNoteI"
+                           formControlName="tNoteI"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.moyenne" for="field_moyenne">Moyenne</label>
+                    <input type="number" class="form-control" name="moyenne" id="field_moyenne"
+                           formControlName="moyenne"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.mention" for="field_mention">Mention</label>
+                    <select class="form-control" name="mention" formControlName="mention" id="field_mention">
+                        <option value="Parfait">{{ 'pgeApp.Mentions.Parfait' | translate }}</option>
+                        <option value="Excellent">{{ 'pgeApp.Mentions.Excellent' | translate }}</option>
+                        <option value="TresBien">{{ 'pgeApp.Mentions.TresBien' | translate }}</option>
+                        <option value="Bien">{{ 'pgeApp.Mentions.Bien' | translate }}</option>
+                        <option value="AssezBien">{{ 'pgeApp.Mentions.AssezBien' | translate }}</option>
+                        <option value="Passable">{{ 'pgeApp.Mentions.Passable' | translate }}</option>
+                        <option value="Mediocre">{{ 'pgeApp.Mentions.Mediocre' | translate }}</option>
+                        <option value="Mauvais">{{ 'pgeApp.Mentions.Mauvais' | translate }}</option>
+                        <option value="Null">{{ 'pgeApp.Mentions.Null' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.eleve" for="field_eleve">Eleve</label>
+                    <select class="form-control" id="field_eleve" name="eleve" formControlName="eleve">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="eleveOption.id === editForm.get('eleve')!.value?.id ? editForm.get('eleve')!.value : eleveOption" *ngFor="let eleveOption of eleves; trackBy: trackById">{{ eleveOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pgeApp.bulettin.classe" for="field_classe">Classe</label>
+                    <select class="form-control" id="field_classe" name="classe" formControlName="classe">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="classeOption.id === editForm.get('classe')!.value?.id ? editForm.get('classe')!.value : classeOption" *ngFor="let classeOption of classes; trackBy: trackById">{{ classeOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

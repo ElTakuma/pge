@@ -1,0 +1,22 @@
+{
+  "pgeApp": {
+    "classeLt": {
+      "home": {
+        "title": "ClasseLts",
+        "createLabel": "Créer un nouveau Classe Lt",
+        "createOrEditLabel": "Créer ou éditer un Classe Lt",
+        "notFound": "Aucun Classe Lt trouvé"
+      },
+      "created": "Un nouveau Classe Lt a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Classe Lt avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Classe Lt avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Classe Lt {{ id }} ?"
+      },
+      "detail": {
+        "title": "Classe Lt"
+      },
+      "reference": "Reference"
+    }
+  }
+}

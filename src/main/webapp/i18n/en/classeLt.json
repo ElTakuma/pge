@@ -1,0 +1,22 @@
+{
+  "pgeApp": {
+    "classeLt": {
+      "home": {
+        "title": "Classe Lts",
+        "createLabel": "Create a new Classe Lt",
+        "createOrEditLabel": "Create or edit a Classe Lt",
+        "notFound": "No Classe Lts found"
+      },
+      "created": "A new Classe Lt is created with identifier {{ param }}",
+      "updated": "A Classe Lt is updated with identifier {{ param }}",
+      "deleted": "A Classe Lt is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Classe Lt {{ id }}?"
+      },
+      "detail": {
+        "title": "Classe Lt"
+      },
+      "reference": "Reference"
+    }
+  }
+}

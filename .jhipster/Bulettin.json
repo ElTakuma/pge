@@ -1,0 +1,62 @@
+{
+    "name": "Bulettin",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "sessionB",
+            "fieldType": "SessionLt",
+            "fieldValues": "Trimestre1,Trimestre2,Trimestre3,Sequence1,Sequence2,Sequence3,Sequence4,Sequence5,Sequence6"
+        },
+        {
+            "fieldName": "tCoef",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "tNoteI",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "moyenne",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "mention",
+            "fieldType": "Mentions",
+            "fieldValues": "Parfait,Excellent,TresBien,Bien,AssezBien,Passable,Mediocre,Mauvais,Null"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "eleve",
+            "otherEntityRelationshipName": "bulettin",
+            "relationshipName": "eleve",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classe",
+            "otherEntityRelationshipName": "bulettin",
+            "relationshipName": "classe",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200902085100",
+    "entityTableName": "bulettin",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

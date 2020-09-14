@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="pgeApp.bulettin.home.title">Bulettins</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bulettin" [routerLink]="['/bulettin/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="pgeApp.bulettin.home.createLabel">
+            Create a new Bulettin
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bulettins?.length === 0">
+        <span jhiTranslate="pgeApp.bulettin.home.notFound">No bulettins found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bulettins?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="code"><span jhiTranslate="pgeApp.bulettin.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sessionB"><span jhiTranslate="pgeApp.bulettin.sessionB">Session B</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tCoef"><span jhiTranslate="pgeApp.bulettin.tCoef">T Coef</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tNoteI"><span jhiTranslate="pgeApp.bulettin.tNoteI">T Note I</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="moyenne"><span jhiTranslate="pgeApp.bulettin.moyenne">Moyenne</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="mention"><span jhiTranslate="pgeApp.bulettin.mention">Mention</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="eleve.id"><span jhiTranslate="pgeApp.bulettin.eleve">Eleve</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="classe.id"><span jhiTranslate="pgeApp.bulettin.classe">Classe</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bulettin of bulettins ;trackBy: trackId">
+                    <td><a [routerLink]="['/bulettin', bulettin.id, 'view']">{{ bulettin.id }}</a></td>
+                    <td>{{ bulettin.code }}</td>
+                    <td jhiTranslate="{{ 'pgeApp.SessionLt.' + bulettin.sessionB }}">{{ bulettin.sessionB }}</td>
+                    <td>{{ bulettin.tCoef }}</td>
+                    <td>{{ bulettin.tNoteI }}</td>
+                    <td>{{ bulettin.moyenne | number }}</td>
+                    <td jhiTranslate="{{ 'pgeApp.Mentions.' + bulettin.mention }}">{{ bulettin.mention }}</td>
+                    <td>
+                        <div *ngIf="bulettin.eleve">
+                            <a [routerLink]="['/eleve', bulettin.eleve?.id, 'view']" >{{ bulettin.eleve?.nom }}&nbsp;{{ bulettin.eleve?.prenom }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="bulettin.classe">
+                            <a [routerLink]="['/classe', bulettin.classe?.id, 'view']" >{{ bulettin.classe?.code }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/bulettin', bulettin.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/bulettin', bulettin.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(bulettin)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="bulettins?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

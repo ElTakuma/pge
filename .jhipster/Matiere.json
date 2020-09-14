@@ -1,0 +1,54 @@
+{
+    "name": "Matiere",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "coeficient",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "matiereLt",
+            "otherEntityRelationshipName": "matiere",
+            "relationshipName": "matiereLt",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "professeur",
+            "otherEntityRelationshipName": "matiere",
+            "relationshipName": "professeur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classeLt",
+            "otherEntityRelationshipName": "matiere",
+            "relationshipName": "classeLt",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200902085000",
+    "entityTableName": "matiere",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

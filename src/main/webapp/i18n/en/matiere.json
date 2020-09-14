@@ -1,0 +1,26 @@
+{
+  "pgeApp": {
+    "matiere": {
+      "home": {
+        "title": "Matieres",
+        "createLabel": "Create a new Matiere",
+        "createOrEditLabel": "Create or edit a Matiere",
+        "notFound": "No Matieres found"
+      },
+      "created": "A new Matiere is created with identifier {{ param }}",
+      "updated": "A Matiere is updated with identifier {{ param }}",
+      "deleted": "A Matiere is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Matiere {{ id }}?"
+      },
+      "detail": {
+        "title": "Matiere"
+      },
+      "code": "Code",
+      "coeficient": "Coeficient",
+      "matiereLt": "Matiere Lt",
+      "professeur": "Professeur",
+      "classeLt": "Classe Lt"
+    }
+  }
+}

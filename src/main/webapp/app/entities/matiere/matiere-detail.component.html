@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="matiere">
+            <h2><span jhiTranslate="pgeApp.matiere.detail.title">Matiere</span> {{ matiere.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pgeApp.matiere.code">Code</span></dt>
+                <dd>
+                    <span>{{ matiere.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="pgeApp.matiere.coeficient">Coeficient</span></dt>
+                <dd>
+                    <span>{{ matiere.coeficient }}</span>
+                </dd>
+                <dt><span jhiTranslate="pgeApp.matiere.matiereLt">Matiere Lt</span></dt>
+                <dd>
+                    <div *ngIf="matiere.matiereLt">
+                        <a [routerLink]="['/matiere-lt', matiere.matiereLt?.id, 'view']">{{ matiere.matiereLt?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pgeApp.matiere.professeur">Professeur</span></dt>
+                <dd>
+                    <div *ngIf="matiere.professeur">
+                        <a [routerLink]="['/professeur', matiere.professeur?.id, 'view']">{{ matiere.professeur?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pgeApp.matiere.classeLt">Classe Lt</span></dt>
+                <dd>
+                    <div *ngIf="matiere.classe">
+                        <a [routerLink]="['/classe-lt', matiere.classe?.id, 'view']">{{ matiere.classe?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/matiere', matiere.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+version: '2'
+services:
+  pge-postgresql:
+    image: postgres:12.1
+    # volumes:
+    #     - ~/volumes/jhipster/pge/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=pge
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432

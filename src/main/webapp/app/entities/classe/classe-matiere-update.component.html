@@ -1,0 +1,50 @@
+    <h1 mat-dialog-title id="jhi-matiere-heading" jhiTranslate="pgeApp.matiere.home.createOrEditLabel">Create or edit a Matiere</h1>
+    <div mat-dialog-content>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>
+                    <span class="form-control-label" jhiTranslate="pgeApp.matiere.code" for="field_code">Code</span></mat-label>
+                <input matInput type="text" [(ngModel)]="data.code">
+                <button mat-button *ngIf="data.code" matSuffix mat-icon-button aria-label="Clear" (click)="data.code=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    <span class="form-control-label" jhiTranslate="pgeApp.matiere.matiereLt" for="field_code">matiereLt</span></mat-label>
+                <mat-select [(ngModel)]="data.matiereLt" name="matiereLt">
+                    <mat-option *ngFor="let iMatiereLt of matierelts" [value]="iMatiereLt">
+                        {{iMatiereLt.reference}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>
+                    <span class="form-control-label" jhiTranslate="pgeApp.matiere.coeficient" for="field_code">coeficient</span></mat-label>
+                <input matInput [(ngModel)]="data.coeficient">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    <span class="form-control-label" jhiTranslate="pgeApp.matiere.professeur" for="field_code">professeur</span></mat-label>
+                <mat-select [(ngModel)]="data.professeur" name="professeur">
+                    <mat-option *ngFor="let prof of professeurs" [value]="prof">
+                        {{prof.nom}}&nbsp;{{prof.prenom}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
+

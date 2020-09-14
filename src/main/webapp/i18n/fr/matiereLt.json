@@ -1,0 +1,22 @@
+{
+  "pgeApp": {
+    "matiereLt": {
+      "home": {
+        "title": "MatiereLts",
+        "createLabel": "Créer un nouveau Matiere Lt",
+        "createOrEditLabel": "Créer ou éditer un Matiere Lt",
+        "notFound": "Aucun Matiere Lt trouvé"
+      },
+      "created": "Un nouveau Matiere Lt a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Matiere Lt avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Matiere Lt avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Matiere Lt {{ id }} ?"
+      },
+      "detail": {
+        "title": "Matiere Lt"
+      },
+      "reference": "Reference"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+
+enum Mentions {
+	Parfait,
+    Excellent,
+    TresBien,
+    Bien,
+    AssezBien,
+    Passable,
+    Mediocre,
+    Mauvais,
+    Null
+}
+enum SessionLt {
+	Trimestre1,
+    Trimestre2,
+    Trimestre3,
+    Sequence1,
+    Sequence2,
+    Sequence3,
+    Sequence4,
+    Sequence5,
+    Sequence6
+}
+
+entity ClasseLt {
+	reference String required
+}
+entity MatiereLt {
+	reference String required
+}
+
+entity Professeur {
+	matricul String required unique
+	nom String required
+    prenom String
+}
+
+entity Eleve {
+	matricul String required unique
+    nom String required
+    prenom String required
+    dateNaissance LocalDate required
+}
+
+entity Note {
+	code String required unique
+	noteI Long required
+    noteC Long required
+    observation String
+}
+
+entity Matiere {
+	code String required unique
+    coeficient Long required
+}
+
+entity Bulettin {
+	code String required unique
+    sessionB SessionLt
+    tCoef Long
+    tNoteI Long
+    moyenne Long
+    mention Mentions
+}
+
+entity Classe {
+	code String required unique
+    effectif Long
+}
+
+relationship ManyToOne {
+	Matiere{matiereLt} to MatiereLt
+	Matiere{professeur} to Professeur
+	Matiere{classeLt} to ClasseLt
+	Classe{classeLt} to ClasseLt
+	Classe{Professeur} to Professeur
+	Note{matiere} to Matiere
+	Note{bulettin} to Bulettin
+	Bulettin{eleve} to Eleve
+    Bulettin{classe} to Classe
+    Eleve{classe} to Classe 
+}
+relationship OneToOne {
+	Professeur {user} to User
+    Eleve {user} to User
+}
+
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+dto all with mapstruct except Bulettin, Classe, Matiere, Note, Eleve, Professeur, ClasseLt, MatiereLt, User
+
+// Set service options to all except few
+service all with serviceImpl except User
+
+

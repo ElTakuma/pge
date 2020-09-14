@@ -1,0 +1,28 @@
+{
+  "pgeApp": {
+    "note": {
+      "home": {
+        "title": "Notes",
+        "createLabel": "Créer une nouvelle Note",
+        "createOrEditLabel": "Créer ou éditer une Note",
+        "editLabel": "Editer une Note",
+        "notFound": "Aucune Note trouvé"
+      },
+      "created": "Une nouvelle Note a été créé avec l'identifiant {{ param }}",
+      "updated": "La Note avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Note avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer la Note {{ id }} ?"
+      },
+      "detail": {
+        "title": "Note"
+      },
+      "code": "Code",
+      "noteI": "Note I",
+      "noteC": "Note C",
+      "observation": "Observation",
+      "matiere": "Matiere",
+      "bulettin": "Bulettin"
+    }
+  }
+}

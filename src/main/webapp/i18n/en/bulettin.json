@@ -1,0 +1,29 @@
+{
+  "pgeApp": {
+    "bulettin": {
+      "home": {
+        "title": "Bulettins",
+        "createLabel": "Create a new Bulettin",
+        "createOrEditLabel": "Create or edit a Bulettin",
+        "notFound": "No Bulettins found"
+      },
+      "created": "A new Bulettin is created with identifier {{ param }}",
+      "updated": "A Bulettin is updated with identifier {{ param }}",
+      "deleted": "A Bulettin is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bulettin {{ id }}?"
+      },
+      "detail": {
+        "title": "Bulettin"
+      },
+      "code": "Code",
+      "sessionB": "Session B",
+      "tCoef": "T Coef",
+      "tNoteI": "T Note I",
+      "moyenne": "Moyenne",
+      "mention": "Mention",
+      "eleve": "Eleve",
+      "classe": "Classe"
+    }
+  }
+}

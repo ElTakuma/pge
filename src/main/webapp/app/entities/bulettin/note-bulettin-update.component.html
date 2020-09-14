@@ -1,0 +1,37 @@
+<h1 mat-dialog-title id="jhi-note-heading" jhiTranslate="pgeApp.note.home.editLabel">Editer une note</h1>
+<hr>
+<div mat-dialog-content>
+    <div class="row" *ngIf="note">
+        <div class="col-3" *ngIf="note.matiere">
+            <div *ngIf="note.matiere.matiereLt">
+                <div>
+                    {{note.matiere.matiereLt.reference}}
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            <mat-form-field style="width: 50px">
+                <mat-label>
+                    <span jhiTranslate="pgeApp.note.noteI"></span>
+                </mat-label>
+                <input matInput type="number" [max]="20" [min]="0" [(ngModel)]="note.noteI">
+            </mat-form-field>
+            </div>
+        <div class="col-5">
+            <mat-form-field style="width: 100%">
+                <mat-label>
+                    <span jhiTranslate="pgeApp.note.observation"></span>
+                </mat-label>
+                <input matInput type="text" [(ngModel)]="note.observation">
+            </mat-form-field>
+            </div>
+        <div class="col-3" >
+            <button mat-button mat-raised-button class="tak-bg-coral" [mat-dialog-close]="data" (click)="save()" >
+                <mat-icon>save</mat-icon>
+            </button>
+            <button mat-button mat-raised-button color="warn" class="tak-btn-coral" (click)="onNoClick()" cdkFocusInitial>
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="classe">
+            <h2><span jhiTranslate="pgeApp.classe.detail.title">Classe</span> {{ classe.code }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+            <table class="table table-bordered">
+<!--                <tr>-->.
+<!--                    <td><span jhiTranslate="pgeApp.classe.code">Code</span></td>-->
+<!--                    <td><span>{{ classe.code }}</span></td>-->
+<!--                </tr>-->
+                <tr>
+                    <td><span jhiTranslate="pgeApp.classe.effectif">Effectif</span></td>
+                </tr>
+                <tr>
+                    <td><span jhiTranslate="pgeApp.classe.classeLt">Classe Lt</span></td>
+                    <td>
+                        <div *ngIf="classe.classeLt">
+                            <a [routerLink]="['/classe-lt', classe.classeLt?.id, 'view']">{{ classe.classeLt?.reference }}</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span jhiTranslate="pgeApp.classe.professeur">Professeur</span></td>
+                    <td>
+                        <div *ngIf="classe.professeur">
+                            <a [routerLink]="['/professeur', classe.professeur?.id, 'view']">{{ classe.professeur?.nom }}</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr align="right">
+                    <td colspan="2" class="">
+                        <button type="submit"
+                                (click)="previousState()"
+                                class="btn btn-info">
+                            <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                        </button>
+                        <button type="button"
+                                [routerLink]="['/classe', classe.id, 'edit']"
+                                class="btn btn-primary">
+                            <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="button"
+                                class="btn btn-warning">
+                            <fa-icon icon="pencil-alt"></fa-icon>&nbsp;Matiere
+                        </button>
+                        <button type="submit" mat-raised-button color="primary" (click)="createBull()">Generer</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+<!--        premier -&ndash;&gt; {{matieres | json}}<hr>-->
+<!--        Deuxieme &#45;&#45;&ndash;&gt; {{matieres2 | json}}-->
+    </div>
+    <div class="col-4">
+        <ol>
+                <mat-card>
+                    <span style="width: 100%" jhiTranslate="pgeApp.matiere.home.title">Matieres</span>
+                </mat-card>
+            <hr>
+            <div class="align-content-center">
+                <button mat-raised-button color="primary" (click)="openDialog()">Ajouter</button>
+            </div>
+            <li *ngIf="matieres">
+                Matiere Existante: <i>{{matieres.length}}</i>
+            </li>
+        </ol>
+        <table mat-table [dataSource]="matieres" class="mat-elevation-z8" style="width: 100%">
+
+            <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef> <span jhiTranslate="pgeApp.matiere.code">Code</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+            <ng-container matColumnDef="matiereLt">
+                <th mat-header-cell *matHeaderCellDef> <span jhiTranslate="pgeApp.matiere.matiereLt">Matiere Lt</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.matiereLt.reference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="coeficient">
+                <th mat-header-cell *matHeaderCellDef> <span jhiTranslate="pgeApp.matiere.coeficient">Coeficient</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.coeficient}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

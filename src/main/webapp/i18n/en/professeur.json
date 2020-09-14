@@ -1,0 +1,25 @@
+{
+  "pgeApp": {
+    "professeur": {
+      "home": {
+        "title": "Professeurs",
+        "createLabel": "Create a new Professeur",
+        "createOrEditLabel": "Create or edit a Professeur",
+        "notFound": "No Professeurs found"
+      },
+      "created": "A new Professeur is created with identifier {{ param }}",
+      "updated": "A Professeur is updated with identifier {{ param }}",
+      "deleted": "A Professeur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Professeur {{ id }}?"
+      },
+      "detail": {
+        "title": "Professeur"
+      },
+      "matricul": "Matricul",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "user": "User"
+    }
+  }
+}
